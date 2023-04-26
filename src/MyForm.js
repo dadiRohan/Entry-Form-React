@@ -1,39 +1,38 @@
-import './index.css';
-import { useState } from 'react';
+import axios from "axios";
+import React from "react";
 
-export default function MyForm(){
+const baseURL = "https://jsonplaceholder.typicode.com/posts";
 
-    const [fullName, setFullName] = useState('');
-
-    function handleSubmit(e){
-        e.preventDefault();
-
-        const form = e.target;
-        const formdata = new FormData(form);
-
-        const formJson = Object.fromEntries(formdata.entries());
-        console.log(formJson);
-    }
+export default function MyForm() {
     
-    return (
-        <form method="post" onSubmit={handleSubmit} align="center">
-            <b>FeedBack Form</b>
-            <br/>
-            <label>Full Name</label>
-            <input name="myName" value={fullName} onChange={e=>setFullName(e.target.value)}/>
-            <br/>
-            <i>{fullName}</i>
-            <br/>
-            <label>Category:</label>   
-            <label>Student<input type="radio" name="myRadio" value="student"/></label>
-            <label>Professional<input type="radio" name="myRadio" value="professional"/></label>
-            <br/>
-            <br/>
+  const [valuetitle,setTitle] = React.useState('');   
+  const [valuebody,setBody]   = React.useState('');
+    
 
-            <button type="reset">Reset form</button>
-            <button type="submit">Submit form</button>
-        </form>
-    )
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const formdata = new FormData(form);
+    const formJson = Object.fromEntries(formdata.entries());
+
+    axios.post(baseURL, {
+        title: formJson.title,
+        body: formJson.body
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+  }
+
+
+  return (
+        <form method="post" onSubmit={handleSubmit}>
+            <label>Title:</label>
+            <input name="title" value={valuetitle} onChange={e=>setTitle(e.target.value)}/>    
+            <label>Description:</label>
+            <input name="body" value={valuebody} onChange={e=>setBody(e.target.value)}/>
+            
+        <button type="submit">Create Post</button>
+      </form>
+    );
 }
-
-

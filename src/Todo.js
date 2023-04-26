@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 
 function Add()
 {
@@ -21,7 +21,9 @@ function handleClick(e)
 function Todo() {
 
     return (
+
         <div align="center">
+
             <h1> List</h1>
             <Add />
             <button onClick={e=>
