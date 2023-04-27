@@ -9,7 +9,7 @@ export default function Display(){
     const [posts, setPosts] = useState([])
 
     const fetchData = () => {
-        axios.get("https://jsonplaceholder.typicode.com/posts")
+        axios.get(baseURL)
         .then(response => {
             // console.log(response.data);
             return response.data;
@@ -25,13 +25,16 @@ export default function Display(){
 
     return (
         <div>
-        {posts.length > 0 && (
-            <div >
-            {posts.map(post => (
-                <div key={post.id}>{post.title}</div>
-            ))}
-            </div>
-        )}
+            <h3>Post List:</h3>
+            {posts.length > 0 && (
+                <ul >
+                    <p>
+                        {posts.map(post => (
+                            <li key={post.id}>{post.title}</li>
+                        ))}
+                    </p>
+                </ul>
+            )}
         </div>
     )
 }

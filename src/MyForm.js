@@ -21,18 +21,21 @@ export default function MyForm() {
       })
       .then((response) => {
         console.log(response.data);
+        alert('Post Added Successfully');
       });
   }
 
-
   return (
+      <>
+        <h2>Post Form</h2>
         <form method="post" onSubmit={handleSubmit}>
             <label>Title:</label>
             <input name="title" value={valuetitle} onChange={e=>setTitle(e.target.value)}/>    
             <label>Description:</label>
             <input name="body" value={valuebody} onChange={e=>setBody(e.target.value)}/>
             
-        <button type="submit">Create Post</button>
-      </form>
+          <button type="submit">Create Post</button>
+        </form>
+      </>
     );
 }
