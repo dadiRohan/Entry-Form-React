@@ -11,7 +11,6 @@ export default function Display(){
     const fetchData = () => {
         axios.get(baseURL)
         .then(response => {
-            // console.log(response.data);
             return response.data;
         })
         .then(data => {
@@ -30,7 +29,7 @@ export default function Display(){
                 <ul >
                     <p>
                         {posts.map(post => (
-                            <li key={post.id}>{post.title}</li>
+                            <li>{post.title}</li>
                         ))}
                     </p>
                 </ul>

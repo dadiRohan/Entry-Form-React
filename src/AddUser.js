@@ -5,9 +5,9 @@ const baseURL = "https://jsonplaceholder.typicode.com/users";
 
 function AddUser()
 {   
-    const [name, setName] = useState();
-    const [phone, setPhone] = useState();
-    const [email, setEmail] = useState();
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
 
     function handleSend(e){
         e.preventDefault();
@@ -15,15 +15,12 @@ function AddUser()
         const form = e.target;
         const formdata = new FormData(form);
         const formJson = Object.fromEntries(formdata.entries());
-
-        // console.log(formJson);
         
         axios.post(baseURL,{
             name: formJson.username,
             phone: formJson.phone,
             email: formJson.email
         }).then((response)=>{
-            console.log(response.data);
             if(response.data.id){
                 alert(response.data.name +' Added Successfully')
             }else{

@@ -22,6 +22,7 @@ function DisplayUser(){
         fetchUser()
     },[])
 
+
     return (
         <>
             <h3>View Users :</h3>

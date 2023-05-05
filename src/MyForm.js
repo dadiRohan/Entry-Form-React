@@ -20,7 +20,7 @@ export default function MyForm() {
         body: formJson.body
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         alert('Post Added Successfully');
       });
   }
