@@ -26,13 +26,13 @@ export default function Display(){
         <div>
             <h3>Post List:</h3>
             {posts.length > 0 && (
-                <ul >
+                <ol >
                     <p>
                         {posts.map(post => (
                             <li>{post.title}</li>
                         ))}
                     </p>
-                </ul>
+                </ol>
             )}
         </div>
     )
