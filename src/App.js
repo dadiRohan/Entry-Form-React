@@ -1,37 +1,51 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import Home from './User';
 import Todo from './Todo';
 import Post from './Post';
 import './App.css';
 
 class App extends Component {
-render() {
-	return (
-      <>
+  render() {
+    return (
       <Router>
-         <div className="App">
-            <ul className="App-header1">
+        <div className="App">
+          <ul className="App-header1">
             <li>
-               <Link to="/">Home</Link>
+              <NavLink 
+                to="/" 
+                className={({ isActive }) => (isActive ? 'active' : '')}
+                end
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-               <Link to="todo">Todo</Link>
+              <NavLink 
+                to="/todo" 
+                className={({ isActive }) => (isActive ? 'active' : '')}
+              >
+                Todo
+              </NavLink>
             </li>
             <li>
-               <Link to="post">Post</Link>
+              <NavLink 
+                to="/post" 
+                className={({ isActive }) => (isActive ? 'active' : '')}
+              >
+                Post
+              </NavLink>
             </li>
-            </ul>
-         <Routes>
-               <Route exact path='/' element={< Home />}></Route>
-               <Route exact path='todo' element={< Todo />}></Route>
-               <Route exact path='post' element={< Post />}></Route>
-         </Routes>
-         </div>
+          </ul>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/todo" element={<Todo />} />
+            <Route path="/post" element={<Post />} />
+          </Routes>
+        </div>
       </Router>
-   </>
-);
-}
+    );
+  }
 }
 
 export default App;
